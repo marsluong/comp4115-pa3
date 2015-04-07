@@ -1,0 +1,22 @@
+mysql> create function exp(one int, two int) returns int
+mysql> return (one * two);
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> select exp(4,5);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'exp'
+
+(It works if it was a different function name..)
+
+eg.
+
+mysql> create function expo(one int, two int) returns int
+    -> return (one * two);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select expo(4,5);
++-----------+
+| expo(4,5) |
++-----------+
+|        20 |
++-----------+
+1 row in set (0.01 sec)
